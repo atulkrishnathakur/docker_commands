@@ -102,11 +102,34 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker build -t sofbookdockerimage .
 
 ```
 
-4. You can see specific image by `docker inspect` command
+4. You can see details of specific image by `docker inspect` command.
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker inspect sofbookdockerimage
 
+```
+
+5. You can see docker image list by command
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker images
+
+```
+
+## how to create image with tag
+1. If `softbook_docker/Dockerfile` file created in project root directory then you will create image of docker.
+2. first go in project root directory where docker file available  
+3. Run the command: $ docker build -t <image_name>:<tag version> .
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker build -t softbookdockerimage:1.0 .
+
+```
+4. You can see details of specific image by `docker inspect` command.
+ - command: $ docker inspect <image_name>:<tag name>
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker inspect softbookdockerimage:1.0
 ```
 
 5. You can see docker image list by command
@@ -132,10 +155,52 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a
 
 ```
 
+## create docker container but not run this container 
+1. command : :~/softbook_docker$ docker create --name <container name> <image name>:<tag>
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker create --name dev_container softbookdockerimage:1.0
+
+```
+
+2. You will see the container status
+
+- Here status is `CREATED` 
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a --filter ancestor=b410fcd67bc1
+CONTAINER ID   IMAGE                     COMMAND                  CREATED         STATUS    PORTS     NAMES
+9839f284f9b1   softbookdockerimage:1.0   "uvicorn app.main:ap…"   3 minutes ago   Created             dev_container
+
+```
+
+## How to start container 
+
+command: :~/softbook_docker$ docker start <container id>
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker start 9839f284f9b1
+
+```
+- you will see the container status after start. Here status is `Up 9 seconds`.  
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a --filter ancestor=b410fcd67bc1
+CONTAINER ID   IMAGE                     COMMAND                  CREATED         STATUS         PORTS     NAMES
+9839f284f9b1   softbookdockerimage:1.0   "uvicorn app.main:ap…"   5 minutes ago   Up 9 seconds             dev_container
+
+```
+
 ## How to stop docker container
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker stop softbookdockercontainer
+
+```
+- You will see the container status after stop. Here status is `Exited (0) 9 seconds ago`
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a --filter ancestor=b410fcd67bc1
+CONTAINER ID   IMAGE                     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+9839f284f9b1   softbookdockerimage:1.0   "uvicorn app.main:ap…"   9 minutes ago   Exited (0) 9 seconds ago             dev_container
 
 ```
 
@@ -145,6 +210,10 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker stop softbookdockercontainer
 atul@atul-Lenovo-G570:~/softbook_docker$ docker restart softbookdockercontainer
 
 ```
+
+## About container status
+
+
 
 
 ## Run uvicorn manually for test
