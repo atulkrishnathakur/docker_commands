@@ -49,8 +49,11 @@ RUN pip install --no-cache-dir --upgrade -r /softbook_docker/requirements.txt
 # copy source code files and directory in docker container
 COPY ./app /softbook_docker/app
 
+# copy the nginx configuration file
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
 # this is default command. It will run after container start
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ```
 
