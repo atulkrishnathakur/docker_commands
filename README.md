@@ -153,3 +153,40 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker restart softbookdockercontainer
 atul@atul-Lenovo-G570:~/softbook_docker$ uvicorn app.main:app --reload
 
 ```
+
+## How to see the available images list
+```
+atul@atul-Lenovo-G570:~$ docker images
+
+```
+
+## How to see all container list
+```
+atul@atul-Lenovo-G570:~$ docker ps -a
+
+```
+
+## How to see container list of specific image 
+
+- command: $ docker ps -a --filter ancestor=<image_id>
+
+
+```
+atul@atul-Lenovo-G570:~$ docker ps -a --filter ancestor=315b6543b1b0
+
+```
+
+## how to delete a container 
+
+- command: $ docker rm <container_id>
+
+```
+atul@atul-Lenovo-G570:~$ docker rm 7d9dc2fb0e81
+
+```
+## How to delete an image 
+- first delete all containers of an image 
+- command : $ docker rmi <image_id>
+```
+atul@atul-Lenovo-G570:~$ docker rmi 315b6543b1b0
+```
