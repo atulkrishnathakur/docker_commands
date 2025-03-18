@@ -92,4 +92,61 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 ```
 atul@atul-Lenovo-G570:~$ cd softbook_docker
 ```
-3. Run bellow command to build docker image
+3. Run bellow command to build docker image. Here `sofbookdockerimage` is docker image name
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker build -t sofbookdockerimage .
+
+```
+
+4. You can see specific image by `docker inspect` command
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker inspect sofbookdockerimage
+
+```
+
+5. You can see docker image list by command
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker images
+
+```
+
+## create docker container and run it
+1. Here `softbookdockercontainer` is container name
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker run -d -p 8000:8000 --name softbookdockercontainer sofbookdockerimage
+
+```
+
+2. verify running container. 
+ - docker name show in Exited or Created it means container running successfully
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a
+
+```
+
+## How to stop docker container
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker stop softbookdockercontainer
+
+```
+
+## How to restart docker container
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker restart softbookdockercontainer
+
+```
+
+
+## Run uvicorn manually for test
+
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ uvicorn app.main:app --reload
+
+```

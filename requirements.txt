@@ -1,3 +1,5 @@
+fastapi
+uvicorn
 aiofiles==24.1.0
 aiosmtplib==3.0.2
 alembic==1.14.0
