@@ -156,10 +156,11 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a
 ```
 
 ## create docker container but not run this container 
-1. command : :~/softbook_docker$ docker create --name <container name> <image name>:<tag>
+1. command: `:~/softbook_docker$ docker create -p <host_port>:<container_port> --name dev_container softbookdockerimage:1.0`
+
 
 ```
-atul@atul-Lenovo-G570:~/softbook_docker$ docker create --name dev_container softbookdockerimage:1.0
+atul@atul-Lenovo-G570:~/softbook_docker$ docker create -p 8000:8000 --name dev_container softbookdockerimage:1.0
 
 ```
 
@@ -211,11 +212,6 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker restart softbookdockercontainer
 
 ```
 
-## About container status
-
-
-
-
 ## Run uvicorn manually for test
 
 ```
@@ -247,6 +243,7 @@ atul@atul-Lenovo-G570:~$ docker ps -a --filter ancestor=315b6543b1b0
 
 ## how to delete a container 
 
+- first stop the container 
 - command: $ docker rm <container_id>
 
 ```
@@ -259,3 +256,23 @@ atul@atul-Lenovo-G570:~$ docker rm 7d9dc2fb0e81
 ```
 atul@atul-Lenovo-G570:~$ docker rmi 315b6543b1b0
 ```
+
+## check docker container log
+- By log you can see that FastAPI application runni or not
+
+
+## How to use ngnix with docker 
+1. https://hub.docker.com/_/nginx
+2. first pull the ngix image
+```
+atul@atul-Lenovo-G570:~$ docker pull nginx:stable
+
+```
+3. create container for nginx image for your application 
+
+```
+atul@atul-Lenovo-G570:~$ docker run -d -p 80:80 --name softbookdocker_nginx -v $(pwd)/softbook_docker/nginx.conf:/etc/nginx/nginx.conf nginx:stable
+
+```
+
+Note: network is pending
