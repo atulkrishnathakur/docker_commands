@@ -274,5 +274,37 @@ atul@atul-Lenovo-G570:~$ docker pull nginx:stable
 atul@atul-Lenovo-G570:~$ docker run -d -p 80:80 --name softbookdocker_nginx -v $(pwd)/softbook_docker/nginx.conf:/etc/nginx/nginx.conf nginx:stable
 
 ```
+## how to create network 
+- here `softbook_docker_network` is network name 
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker network create softbook_docker_network
 
-Note: network is pending
+```
+
+## How to see list of networks 
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker network ls
+
+```
+
+## how to connect container with network
+- command is `$ docker network connect <network name> <container name>
+`
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker network connect softbook_docker_network dev_container
+
+```
+
+## how to see the details of network 
+
+```
+atul@atul-Lenovo-G570:~$ docker network inspect bridge
+
+```
+
+## How to inspect specific network
+
+```
+atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
+
+```
