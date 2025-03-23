@@ -319,7 +319,23 @@ atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
 2. Enter personal access toker (pat) in password
 3. You will see
    ```
-   WARNING! Your credentials are stored unencrypted in '/home/username/.docker/config.json'.
-   Configure a credential helper to remove this warning. See
-   https://docs.docker.com/go/credential-store/
+   '/home/username/.docker/config.json'.
+   
    ```
+## How to push image in docker hub
+1. First create a repository name in docker hub. Reference: https://hub.docker.com/repositories/username
+2. create repository in docker hub like `testfastapi`
+3. Tag your local machine image with this repository.
+   Command: `$ docker tag <local image name>:<tag> <docker user name >/<docker repository>:<tag>
+   ```
+   atul@atul-Lenovo-G570:~$ docker tag softbookdockerimage:1.0 atulkrishnathakur/testfastapi:1.0
+
+   ```
+4. push image on docker
+   command: `$ docker push <docker user name>/<docker repository>:<tag>`
+   ```
+   atul@atul-Lenovo-G570:~$ docker push atulkrishnathakur/testfastapi:1.0
+   
+   ```
+5. Note: when you run `docker images` command then you got `softbookdockerimage:1.0` and `atulkrishnathakur/testfastapi:1.0` with same image id. It means `atulkrishnathakur/testfastapi:1.0` not a new image. It is a simply new reference(tag) of the same image.
+   
