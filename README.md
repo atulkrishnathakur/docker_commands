@@ -347,6 +347,3 @@ atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
    ```
      atul@atul-Lenovo-G570:~$ docker pull atulkrishnathakur/testfastapi:1.0
    ```
-   
-## how to pull public repository specific tag
-Rererence
