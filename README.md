@@ -339,3 +339,14 @@ atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
    ```
 5. Note: when you run `docker images` command then you got `softbookdockerimage:1.0` and `atulkrishnathakur/testfastapi:1.0` with same image id. It means `atulkrishnathakur/testfastapi:1.0` not a new image. It is a simply new reference(tag) of the same image.
    
+## How to pull specific tag of repositories from docker hub
+1. You can see reporitories. Open the url https://hub.docker.com/u/username
+2. click on repository name
+3. click on tag to see tags of images
+4. pull specific tag of an image. Command `$ docker pull <docker user name>/<repository name>:<tag>`
+   ```
+     atul@atul-Lenovo-G570:~$ docker pull atulkrishnathakur/testfastapi:1.0
+   ```
+   
+## how to pull public repository specific tag
+Rererence
