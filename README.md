@@ -308,3 +308,18 @@ atul@atul-Lenovo-G570:~$ docker network inspect bridge
 atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
 
 ```
+## How to create Personal Access Token (PAT)
+1. Visite on this url to create token https://app.docker.com/settings/personal-access-tokens
+
+## How to login in docker from terminal
+1. run the below command to login
+   ```
+   atul@atul-Lenovo-G570:~$ docker login -u atulkrishnathakur
+   ```
+2. Enter personal access toker (pat) in password
+3. You will see
+   ```
+   WARNING! Your credentials are stored unencrypted in '/home/username/.docker/config.json'.
+   Configure a credential helper to remove this warning. See
+   https://docs.docker.com/go/credential-store/
+   ```
