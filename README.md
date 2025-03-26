@@ -31,6 +31,7 @@ atul@atul-Lenovo-G570:~/softbook_docker$ touch Dockerfile
 ## About Dockerfile
 
 1. Create the `softbook_docker/Dockerfile` docker file in project root directory.
+2. If you have need to create custome docker image then create the dockerfile
 
 ```
 # Use the official Python image
