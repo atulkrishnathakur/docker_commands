@@ -140,6 +140,10 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker images
 
 ```
 
+## About docker container
+1. docker container is an instance of image
+2. docker container is a small operating system
+
 ## create docker container and run it
 1. Here `softbookdockercontainer` is container name
 
@@ -348,3 +352,29 @@ atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
    ```
      atul@atul-Lenovo-G570:~$ docker pull atulkrishnathakur/testfastapi:1.0
    ```
+## How to go into docker container
+1 command : `$ docker exec -it <container name or container ID> /bin/bash`
+```
+atul@atul-Lenovo-G570:~$ docker exec -it nginx-container /bin/bash
+```
+
+After running you will see.
+```
+root@b57dce611822:/# 
+
+```
+- Here `b57dce611822` is the container ID. And `root` is the user of container.
+- Note: Container is a small operating system.
+- Note: Now you can run approx all command of cmd or linux terminal
+
+## how to exit from container
+command: `exit`
+```
+root@b57dce611822:/# exit
+
+```
+then you will see again
+```
+atul@atul-Lenovo-G570:~$ 
+
+```
