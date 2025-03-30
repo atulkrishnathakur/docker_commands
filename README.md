@@ -378,3 +378,15 @@ then you will see again
 atul@atul-Lenovo-G570:~$ 
 
 ```
+
+## how to see volume
+```
+atul@atul-Lenovo-G570:~$ docker volume ls
+
+```
+## how to remove volume
+command: `$ docker rm volume <volume name>`
+```
+atul@atul-Lenovo-G570:~$ docker rm volume greenbook_postgresdata
+
+```
