@@ -18,14 +18,12 @@ Docker version 28.0.1, build 068a01e
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker version
-
 ```
 
 ## Create the Dockerfile
 - Create the docker file using command
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ touch Dockerfile
-
 ```
 
 ## About Dockerfile
@@ -100,21 +98,18 @@ atul@atul-Lenovo-G570:~$ cd softbook_docker
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker build -t sofbookdockerimage .
-
 ```
 
 4. You can see details of specific image by `docker inspect` command.
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker inspect sofbookdockerimage
-
 ```
 
 5. You can see docker image list by command
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker images
-
 ```
 
 ## how to create image with tag
@@ -124,7 +119,6 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker images
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker build -t softbookdockerimage:1.0 .
-
 ```
 4. You can see details of specific image by `docker inspect` command.
  - command: $ docker inspect <image_name>:<tag name>
@@ -137,7 +131,6 @@ atul@atul-Lenovo-G570:~/softbook_docker$ docker inspect softbookdockerimage:1.0
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker images
-
 ```
 
 ## About docker container
@@ -214,7 +207,6 @@ CONTAINER ID   IMAGE                     COMMAND                  CREATED       
 
 ```
 atul@atul-Lenovo-G570:~/softbook_docker$ docker restart softbookdockercontainer
-
 ```
 
 ## Run uvicorn manually for test
@@ -233,7 +225,6 @@ atul@atul-Lenovo-G570:~$ docker images
 ## How to see all container list
 ```
 atul@atul-Lenovo-G570:~$ docker ps -a
-
 ```
 
 ## How to see container list of specific image 
@@ -371,8 +362,15 @@ root@b57dce611822:/#
 
 ## How to go into docker container by root user
 - The `-u 0` option specifies the root user (user ID 0)
+- Command `docker exec -u 0 -it <container_name_or_id> bash`
 ```
 atul@atul-Lenovo-G570:~$ docker exec -u 0 -it pgadmin4container bash
+```
+
+## How to go into docker container by specific user
+- command `docker exec -u <username_or_id> -it <container_name_or_id> bash`
+```
+atul@atul-Lenovo-G570:~$ docker exec -u pgadmin -it pgadmin4container bash
 ```
 
 ## how to exit from container
