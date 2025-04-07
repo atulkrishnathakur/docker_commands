@@ -369,6 +369,12 @@ root@b57dce611822:/#
 - Note: Container is a small operating system.
 - Note: Now you can run approx all command of cmd or linux terminal
 
+## How to go into docker container by root user
+- The `-u 0` option specifies the root user (user ID 0)
+```
+atul@atul-Lenovo-G570:~$ docker exec -u 0 -it pgadmin4container bash
+```
+
 ## how to exit from container
 command: `exit`
 ```
