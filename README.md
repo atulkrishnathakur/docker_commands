@@ -356,6 +356,8 @@ atul@atul-Lenovo-G570:~$ docker network inspect softbook_docker_network
 1 command : `$ docker exec -it <container name or container ID> /bin/bash`
 ```
 atul@atul-Lenovo-G570:~$ docker exec -it nginx-container /bin/bash
+# or
+atul@atul-Lenovo-G570:~$ docker exec -it nginx-container bash
 ```
 
 After running you will see.
