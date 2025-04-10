@@ -392,7 +392,7 @@ atul@atul-Lenovo-G570:~$
 ```
 atul@atul-Lenovo-G570:~$ docker volume ls
 ```
-4. You can see manually your volume in `/var/lib/docker/<volume_name>/` path in linux
+4. You can see manually your volume in `/var/lib/docker/volumes/<volume_name>/` path in linux
    
 ## how to remove volume
 command: `$ docker rm volume <volume name>`
