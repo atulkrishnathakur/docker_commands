@@ -386,10 +386,14 @@ atul@atul-Lenovo-G570:~$
 ```
 
 ## how to see volume
+1. Docker persistent volume will be create in host machine.
+2. Persistent volume is not delete when you down or remove container
+3. See the volume by command.
 ```
 atul@atul-Lenovo-G570:~$ docker volume ls
-
 ```
+2. You can see manually your volume in `/var/lib/docker/<volume_name>/` path in linux
+   
 ## how to remove volume
 command: `$ docker rm volume <volume name>`
 ```
