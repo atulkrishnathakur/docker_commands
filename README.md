@@ -261,6 +261,12 @@ atul@atul-Lenovo-G570:~$ docker rmi 315b6543b1b0
     atul@atul-Lenovo-G570:~$ docker logs fastapiappcontainer
   ```
 
+## `docker compose logs` command
+- the command `docker compose logs` used to check all services are running that is defined in `docker-compose.yml` file
+- first go in directory where your `yml` file available
+  ```
+  atul@atul-Lenovo-G570:~/greenbook$ docker compose logs
+  ```
 
 ## How to use ngnix with docker 
 1. https://hub.docker.com/_/nginx
