@@ -253,8 +253,13 @@ atul@atul-Lenovo-G570:~$ docker rm 7d9dc2fb0e81
 atul@atul-Lenovo-G570:~$ docker rmi 315b6543b1b0
 ```
 
-## check docker container log
-- By log you can see that FastAPI application runni or not
+## check docker container log for errors
+- By log you can see that FastAPI application running or not
+- You can see error of a container
+- command `docker logs <container name or id>`
+  ```
+    atul@atul-Lenovo-G570:~$ docker logs fastapiappcontainer
+  ```
 
 
 ## How to use ngnix with docker 
