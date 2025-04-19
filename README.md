@@ -416,3 +416,9 @@ command: `$ docker export -o <filenae>.tar <container_id_or_name>`
 ```
 atul@atul-Lenovo-G570:~$ docker export -o /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar 78ccc7f6da33
 ```
+## How to save an image for backup
+command: `$ docker save -o <file_name>.tar <image_id>`
+```
+atul@atul-Lenovo-G570:~$ docker save -o /home/atul/docker_container_backup/greenbook_image.tar 6cdf9ce8856e
+```
+
