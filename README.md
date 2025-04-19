@@ -427,3 +427,9 @@ atul@atul-Lenovo-G570:~$ docker save -o /home/atul/docker_container_backup/green
 ```
 atul@atul-Lenovo-G570:~$ docker import /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar fastapiappimported
 ```
+
+## How to load backup image
+command: `$ docker load -i <imagefilename>.tar`
+```
+atul@atul-Lenovo-G570:~$ docker load -i /home/atul/docker_container_backup/greenbook_image.tar
+```
