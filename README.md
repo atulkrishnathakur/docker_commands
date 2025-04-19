@@ -411,3 +411,8 @@ command: `$ docker rm volume <volume name>`
 atul@atul-Lenovo-G570:~$ docker rm volume greenbook_postgresdata
 
 ```
+## How to export docker container for backup
+command: `$ docker export -o <filenae>.tar <container_id_or_name>`
+```
+atul@atul-Lenovo-G570:~$ docker export -o /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar 78ccc7f6da33
+```
