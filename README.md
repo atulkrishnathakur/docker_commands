@@ -412,7 +412,7 @@ atul@atul-Lenovo-G570:~$ docker rm volume greenbook_postgresdata
 
 ```
 ## How to export docker container for backup
-command: `$ docker export -o <filenae>.tar <container_id_or_name>`
+command: `$ docker export -o <filename>.tar <container_id_or_name>`
 ```
 atul@atul-Lenovo-G570:~$ docker export -o /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar 78ccc7f6da33
 ```
@@ -421,4 +421,9 @@ command: `$ docker save -o <file_name>.tar <image_id>`
 ```
 atul@atul-Lenovo-G570:~$ docker save -o /home/atul/docker_container_backup/greenbook_image.tar 6cdf9ce8856e
 ```
-
+## How to import a container
+- Command: `atul@atul-Lenovo-G570:~$ docker import <filename>.tar <New Image Name>`
+- note: `import` command does not import container in existing image
+```
+atul@atul-Lenovo-G570:~$ docker import /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar fastapiappimported
+```
