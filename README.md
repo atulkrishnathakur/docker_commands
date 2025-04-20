@@ -417,9 +417,10 @@ command: `$ docker export -o <filename>.tar <container_id_or_name>`
 atul@atul-Lenovo-G570:~$ docker export -o /home/atul/docker_container_backup/greenbook_fastapiappcontainer.tar 78ccc7f6da33
 ```
 ## How to save an image for backup
-command: `$ docker save -o <file_name>.tar <image_id>`
+- If you save a docker image with image ID and again you load image then image will load with `None`.
+- command: `$ docker save -o <file_name>.tar <image_name>:<tag>`
 ```
-atul@atul-Lenovo-G570:~$ docker save -o /home/atul/docker_container_backup/greenbook_image.tar 6cdf9ce8856e
+ atul@atul-Lenovo-G570:~$ docker save -o /home/atul/docker_container_backup/mydocker_image2.tar fastapiappimage:9.0
 ```
 ## How to import a container
 - Command: `atul@atul-Lenovo-G570:~$ docker import <filename>.tar <New Image Name>`
