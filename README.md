@@ -436,12 +436,13 @@ atul@atul-Lenovo-G570:~$ docker load -i /home/atul/docker_container_backup/green
 ```
 
 ## How to run `.yml` file by `docker compose` command
-1. If you created `docker-compose.yml`. It is the default file. you can run this file using below command
+1. If user not login in docker then login docker first.
+2. If you created `docker-compose.yml`. It is the default file. you can run this file using below command
    ```
      atul@atul-Lenovo-G570:~/microhub/microhub-gateway$ docker compose up -d --build
    ```
 
-2. If you want to run custom docker compose file then use `-f` flag in command as like below command
+3. If you want to run custom docker compose file then use `-f` flag in command as like below command
    ```
    atul@atul-Lenovo-G570:~/microhub/microhub-gateway$ docker compose -f docker-compose.dev.yml up -d --build
    ```
