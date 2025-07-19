@@ -171,6 +171,10 @@ CONTAINER ID   IMAGE                     COMMAND                  CREATED       
 9839f284f9b1   softbookdockerimage:1.0   "uvicorn app.main:ap…"   3 minutes ago   Created             dev_container
 
 ```
+## Show the containers of images
+```
+atul@atul-Lenovo-G570:~/softbook_docker$ docker ps -a
+```
 
 ## How to start container 
 
