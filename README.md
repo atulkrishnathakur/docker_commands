@@ -480,3 +480,13 @@ fastapiappimage                 8.0       6cdf9ce8856e   31 minutes ago      1.4
 atul@atul-Lenovo-G570:~$ docker image prune -f
 ```
 
+## Clean up or reset docker
+```
+atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
+
+```
+  - all stopped containers
+  - all networks not used by at least one container
+  - all anonymous volumes not used by at least one container
+  - all images without at least one container associated to them
+  - all build cache
