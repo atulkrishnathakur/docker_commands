@@ -494,3 +494,14 @@ atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
   - all anonymous volumes not used by at least one container
   - all images without at least one container associated to them
   - all build cache
+
+## In `docker-compose.yml` file hostmachine(local) and container port mapping
+1. port mapping syntax
+   ```
+   ports:
+    - <hostPort>:<containerPort>
+      
+   ```
+   - hostPort: Port on local machine(where browser hits)
+   - containerPort: Port inside the Docker container( where app runs)
+
