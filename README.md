@@ -551,7 +551,7 @@ atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
 
    ```
 4. docker-compose.yml file
-   ```
+```
 services:
   websys:
     build:
@@ -590,6 +590,6 @@ networks:
     driver: bridge
     name: websysnetwork # Explicitly name defined of network
 
-   ```
+```
 
    
