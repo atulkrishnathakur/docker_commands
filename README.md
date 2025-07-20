@@ -499,7 +499,7 @@ atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
 1. port mapping syntax
    ```
    ports:
-    - <hostPort>:<containerPort>
+    - "<hostPort>:<containerPort>"
       
    ```
    - hostPort: Port on local machine(where browser hits)
@@ -591,3 +591,9 @@ networks:
     name: websysnetwork # Explicitly name defined of network
 
 ```
+
+5. Here we have need to uderstand port mapping.
+   - When you will run docker then `nginx.config` file will be run in `nginxcontainer` container. In nginx.config file we are using port 90. You can see `listen 90;`
+   - When you hit `localhost:8082` from browser then request will go on 8082 port in host machine. Now, docker will forward this request on 90 port in `nginxcontainer`container because in docker-compose.yml file port mapping is `8082:90`. In `nginxcontainer` container nginx server is running that has listening port is 90. Now, nginx server is sending request by proxy on `8000` port in `websyscontainer` container because in `nginx.conf` file we are using `proxy_pass http://websys_upstream;` and `upstream websys_upstream { server websyscontainer:8000; }`. Our uvicorn server running on 8000 port in `websyscontainer` container because we are using `CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]` in Dockerfile. Now, our API will get request and send response to browser because uvicorn server running on 8000 port in `websyscontainer` container.
+
+
