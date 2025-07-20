@@ -505,3 +505,91 @@ atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
    - hostPort: Port on local machine(where browser hits)
    - containerPort: Port inside the Docker container( where app runs)
 
+2. A simple dockerfile
+   ```
+   # Use the official Python image
+   FROM python:3.12
+   
+   # Set the working directory. It means project root directory
+   WORKDIR /websys
+   
+   # This command put requirements.txt in container in specific directory. Requirements library will be install in docker container
+   COPY ../requirements.txt /websys/requirements.txt
+   
+   # This command will install dependancies in docker container
+   RUN pip install --no-cache-dir --upgrade -r /websys/requirements.txt
+   
+   # copy source code files and directory in docker container
+   COPY ./app /websys/app
+   
+   # this is default command. It will run after container start
+   CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+   ```
+3. nginx.config file
+   ```
+   events {}
+   
+   http {
+       upstream websys_upstream {
+          server websyscontainer:8000; # for development on local machine
+       }
+   
+       server {
+           listen 90;
+           server_name localhost;
+   
+           location / {
+               proxy_pass http://websys_upstream;
+               proxy_set_header Host $host;
+               proxy_set_header X-Real-IP $remote_addr;
+               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+               proxy_set_header X-Forwarded-Proto $scheme;
+           }
+       }
+   }
+
+   ```
+4. docker-compose.yml file
+   ```
+services:
+  websys:
+    build:
+      context: . # directory where docker file created. Here dot(.) used for root directory
+      dockerfile: dockerfiles/Dockerfile.dev
+    image: websys:latest
+    container_name: websyscontainer
+    ports:
+      - "8081:8000" # Maps port 8000 on the host to port 8000 in the container. Here port map as <hostport>:<containerport>
+    env_file:
+      - .env # Load all environment variables from the .env file
+    environment:
+      - ENV=$ENV # Explicitly defines the ENV variable from the .env file
+    
+    volumes:
+      - .:/websys # Bind-mounted local directory for live updates. but it will be not use in production
+    networks:
+      - mywebsysnetwork # Connects to your custom network
+    restart: unless-stopped # better for development. better for debuging. If you want to stop container manually then it will not again start automatically. It will start automatically when system reboot
+    
+  nginx: # Service for the Nginx web server
+    image: nginx:stable # Uses the stable version of the official Nginx image
+    container_name: nginxcontainer # Custom name for the container
+    ports:
+      - "8082:90" # Maps port 80 on the host to port 80 in the container. Here port map as <hostport>:<containerport>
+    volumes:
+      - ./nginx-dev.conf:/etc/nginx/nginx.conf:ro # Mounts the custom Nginx configuration file in read-only mode. It is bind mount. It is not persistent valume
+    depends_on:
+      - websys # Ensures websys service starts before Nginx
+    networks:
+      - mywebsysnetwork # Connects to your custom network
+    restart: always # Automatically restarts the container if it stops or after a host machine reboot
+
+networks:
+  mywebsysnetwork: # Ensure this name matches all other references
+    driver: bridge
+    name: websysnetwork # Explicitly name defined of network
+
+   ```
+
+   
