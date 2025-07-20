@@ -495,7 +495,7 @@ atul@atul-Lenovo-G570:~$ docker system prune -a --volumes
   - all images without at least one container associated to them
   - all build cache
 
-## In `docker-compose.yml` file hostmachine(local) and container port mapping
+## The hostmachine(local) and container port mapping in `docker-compose.yml` file 
 1. port mapping syntax
    ```
    ports:
