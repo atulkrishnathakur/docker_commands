@@ -560,7 +560,7 @@ services:
     image: websys:latest
     container_name: websyscontainer
     ports:
-      - "8081:8000" # Maps port 8000 on the host to port 8000 in the container. Here port map as <hostport>:<containerport>
+      - "8081:8000" # Maps host machine port 8081 with container port 8000. Here port map as <hostport>:<containerport>
     env_file:
       - .env # Load all environment variables from the .env file
     environment:
@@ -576,7 +576,7 @@ services:
     image: nginx:stable # Uses the stable version of the official Nginx image
     container_name: nginxcontainer # Custom name for the container
     ports:
-      - "8082:90" # Maps port 80 on the host to port 80 in the container. Here port map as <hostport>:<containerport>
+      - "8082:90" # Maps host machine port 8082 with container port 90. Here port map as <hostport>:<containerport>
     volumes:
       - ./nginx-dev.conf:/etc/nginx/nginx.conf:ro # Mounts the custom Nginx configuration file in read-only mode. It is bind mount. It is not persistent valume
     depends_on:
@@ -591,5 +591,3 @@ networks:
     name: websysnetwork # Explicitly name defined of network
 
 ```
-
-   
